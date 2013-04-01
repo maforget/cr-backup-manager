@@ -11,6 +11,7 @@ saves your ComicRack library file at each start of ComicRack
 by docdoom
 
 v 0.1.0
+
 '''
 
 from System.IO import File,  Directory, Path, FileInfo
