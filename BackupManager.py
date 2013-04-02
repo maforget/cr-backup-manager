@@ -54,7 +54,7 @@ def getValue(theFile, myKey):
 
 def setBackupFolder():
 		dialog = FolderBrowserDialog()
-		dialog.Description = 'Please select where to store your backups'
+		dialog.Description = 'The Backup Manager for ComicRack\n\nPlease select where to store your backups'
 		root = getValue(INIFILE,'backupFolder')
 		if str.Trim(root) <> '':
 			dialog.SelectedPath = root
