@@ -1,13 +1,3 @@
-import clr
-import System
-clr.AddReference('System.Windows.Forms')
-clr.AddReference('System.Drawing')
-from System.Windows.Forms import *
-from System.Drawing import *
-
-
-from System.IO import File,  Directory, Path, FileInfo
-import datetime
 
 '''
 Backup Manager for ComicRack
@@ -15,17 +5,46 @@ saves your ComicRack library file at each start of ComicRack
 
 by docdoom
 
-v 0.1.1
+Ionic zip library used with permission from http://dotnetzip.codeplex.com
 
-CHANGE - folder to store the backup files can be selected
-CHANGE - name structure of backup files changed (ComicDB_YYYY-MM-DD_HHMMSS.xml)
+v 0.1.2
+
+CHANGE - backups are stored as ZIP files so they can easily be restored from within CR
 
 '''
+
+import clr
+import System
+clr.AddReference('System.Windows.Forms')
+clr.AddReference('System.Drawing')
+from System.Windows.Forms import *
+from System.Drawing import *
+
+import System.IO
+from System.IO import File,  Directory, Path, FileInfo
+import datetime
+
+clr.AddReference('Ionic.Zip')
+from Ionic.Zip import *
 
 FOLDER = FileInfo(__file__).DirectoryName + '\\'
 INIFILE = Path.Combine(FOLDER, 'backupMan.ini')
 SHOWRESULT = False			# display result of backup
 FILENUMBERWARNING = 500		# threshold of backup file count
+
+def createZip(theZip,theFile):
+	'''
+	creates a ZIP file theZip and stores theFile in it
+	'''
+	print 'theZip: %s' % theZip
+	print 'theFile: %s' % theFile
+	
+	zipfile = ZipFile()
+	zipfile.AddFile(theFile,'')
+	zipfile.Save(theZip)
+
+	return
+	
 
 def writeIni(theFile, myKey, myVal):
 	'''
@@ -44,6 +63,9 @@ def writeIni(theFile, myKey, myVal):
 		File.AppendAllText(theFile,'%s = %s%s' % (myKey, myVal, System.Environment.NewLine))
 
 def getValue(theFile, myKey):
+	'''
+	retrieves the value of myKey in Ini-file theFile
+	'''
 	if File.Exists(theFile):
 		myLines = File.ReadAllLines(theFile)
 		for line in myLines:
@@ -61,7 +83,6 @@ def setBackupFolder():
 		else:
 			dialog.RootFolder = System.Environment.SpecialFolder.Personal
 		if dialog.ShowDialog() == DialogResult.OK:
-			#MessageBox.Show(dialog.SelectedPath)
 			writeIni(INIFILE,'backupFolder',dialog.SelectedPath)
 
 		form = bmMainForm()
@@ -162,14 +183,13 @@ def backupManager_Startup():
 		myDBFile = Path.Combine(myAppDataFolder,'ComicDB.xml')
 		currentDate = now.strftime("%Y-%m-%d_%H%M%S")
 
-		#FOLDER = FileInfo(__file__).DirectoryName + '\\'
-		#backupFolder = Path.Combine(FOLDER,'Backup') 
-
 		if File.Exists(myDBFile):
 			if not Directory.Exists(backupFolder):
 				Directory.CreateDirectory(backupFolder)
-			myBackup = backupFolder + '\\ComicDB_%s.xml' % currentDate
-			File.Copy(myDBFile,myBackup, True)
+
+			myBackup = backupFolder + '\\ComicDB Backup %s.zip' % currentDate
+			createZip(myBackup, myDBFile)
+			
 			if SHOWRESULT == True:
 				if File.Exists(myBackup) and SHOWRESULT == True:
 					MessageBox.Show('Backup saved as %s' % myBackup)
@@ -178,13 +198,16 @@ def backupManager_Startup():
 
 
 #@Name Backup Manager
-#@Hook Library
+#@Hook Library, Books
+#@Image Backup-Green-Button-icon.png
 #@Description Backup Manager
 
 def backupManager(books):
+
 	global SHOWRESULT
 	SHOWRESULT = True
 	form = bmMainForm()
 	form.ShowDialog()
 	form.Dispose()
+
 	
