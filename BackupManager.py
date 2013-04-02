@@ -13,6 +13,7 @@ CHANGE - backups are stored as ZIP files so they can easily be restored from wit
 CHANGE - threshold set to comicdb*.zip instead of *.xml
 CHANGE - result MessageBox redesigned
 CHANGE - dialogs display version number
+CHANGE - root folder for folder browser is now DESKTOP instead of PERSONAL
 
 '''
 VERSION = '0.1.2'
@@ -85,7 +86,7 @@ def setBackupFolder():
 		if str.Trim(root) <> '':
 			dialog.SelectedPath = root
 		else:
-			dialog.RootFolder = System.Environment.SpecialFolder.Personal
+			dialog.RootFolder = System.Environment.SpecialFolder.Desktop
 		if dialog.ShowDialog() == DialogResult.OK:
 			writeIni(INIFILE,'backupFolder',dialog.SelectedPath)
 
@@ -198,7 +199,9 @@ def backupManager_Startup():
 				if File.Exists(myBackup) and SHOWRESULT == True:
 					MessageBox.Show('Backup saved as \n%s' % myBackup, 'Backup Manager for ComicRack %s' % VERSION)
 				else:
-					MessageBox.Show('No backup file was saved.')
+					MessageBox.Show('No backup file was saved. Something unexpected must have happened ...')
+		else:
+			MessageBox.Show('I could not find your library file. Please post this error.')
 
 
 #@Name Backup Manager
