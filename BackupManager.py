@@ -11,8 +11,11 @@ v 0.1.2
 
 CHANGE - backups are stored as ZIP files so they can easily be restored from within CR
 CHANGE - threshold set to comicdb*.zip instead of *.xml
+CHANGE - result MessageBox redesigned
+CHANGE - dialogs display version number
 
 '''
+VERSION = '0.1.2'
 
 import clr
 import System
@@ -150,7 +153,7 @@ class bmMainForm(Form):
 		self.MaximizeBox = False
 		self.MinimizeBox = False
 		self.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-		self.Text = "Backup Manager for ComicRack"
+		self.Text = "Backup Manager for ComicRack - version %s" % VERSION
 		self.ResumeLayout(False)
 		self.PerformLayout()
 
@@ -193,7 +196,7 @@ def backupManager_Startup():
 			
 			if SHOWRESULT == True:
 				if File.Exists(myBackup) and SHOWRESULT == True:
-					MessageBox.Show('Backup saved as %s' % myBackup)
+					MessageBox.Show('Backup saved as \n%s' % myBackup, 'Backup Manager for ComicRack %s' % VERSION)
 				else:
 					MessageBox.Show('No backup file was saved.')
 
