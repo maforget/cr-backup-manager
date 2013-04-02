@@ -10,6 +10,7 @@ Ionic zip library used with permission from http://dotnetzip.codeplex.com
 v 0.1.2
 
 CHANGE - backups are stored as ZIP files so they can easily be restored from within CR
+CHANGE - threshold set to comicdb*.zip instead of *.xml
 
 '''
 
@@ -175,7 +176,7 @@ def backupManager_Startup():
 		backupFolder = getValue(INIFILE,'backupFolder')
 
 	if str.Trim(backupFolder) <> '':
-		if Directory.GetFiles(backupFolder,'*.xml').Length > FILENUMBERWARNING:
+		if Directory.GetFiles(backupFolder,'ComicDB*.zip').Length > FILENUMBERWARNING:
 			MessageBox.Show('There are a lot of backup files in your backupfolder.\nYou should consider a clean-up')
 		now = datetime.datetime.now()
 		myAppDataFolder = System.Environment.ExpandEnvironmentVariables('%appdata%') + '\\'
