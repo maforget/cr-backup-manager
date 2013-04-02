@@ -18,13 +18,14 @@ by docdoom
 v 0.1.1
 
 CHANGE - folder to store the backup files can be selected
+CHANGE - name structure of backup files changed (ComicDB_YYYY-MM-DD_HHMMSS.xml)
 
 '''
 
 FOLDER = FileInfo(__file__).DirectoryName + '\\'
 INIFILE = Path.Combine(FOLDER, 'backupMan.ini')
-SHOWRESULT = False
-FILENUMBERWARNING = 10
+SHOWRESULT = False			# display result of backup
+FILENUMBERWARNING = 500		# threshold of backup file count
 
 def writeIni(theFile, myKey, myVal):
 	'''
@@ -167,7 +168,7 @@ def backupManager_Startup():
 		if File.Exists(myDBFile):
 			if not Directory.Exists(backupFolder):
 				Directory.CreateDirectory(backupFolder)
-			myBackup = backupFolder + '\\ComicDB%s.xml' % currentDate
+			myBackup = backupFolder + '\\ComicDB_%s.xml' % currentDate
 			File.Copy(myDBFile,myBackup, True)
 			if SHOWRESULT == True:
 				if File.Exists(myBackup) and SHOWRESULT == True:
