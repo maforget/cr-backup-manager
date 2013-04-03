@@ -13,7 +13,7 @@ INIFILE = Path.Combine(FOLDER, 'backupMan.ini')
 ICONLARGE = Path.Combine(FOLDER, 'backupManLarge.png')
 FILENUMBERWARNING = 500		# threshold of backup file count
 
-VERSION = '0.1.2 r17'
+VERSION = '0.1.2 r20'
 		
 class backupManagerUtils:
 	def __init__(self):
