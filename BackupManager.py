@@ -17,6 +17,7 @@ CHANGE - dialogs display version number
 CHANGE - root folder for folder browser is now DESKTOP instead of PERSONAL
 CHANGE - form and methods moved to own modules
 CHANGE - full backup of %appdata%\cyo\comicrack is supported
+CHANGE - icons added
 
 '''
 
