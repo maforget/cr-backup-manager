@@ -6,6 +6,7 @@ saves your ComicRack library file at each start of ComicRack
 by docdoom
 
 Ionic zip library used with permission from http://dotnetzip.codeplex.com
+Icons and images used with permission from http://jonasraskdesign.com
 
 v 0.1.2
 
@@ -18,7 +19,6 @@ CHANGE - form and methods moved to own modules
 CHANGE - full backup of %appdata%\cyo\comicrack is supported
 
 '''
-VERSION = '0.1.2'
 
 import clr
 import System
@@ -48,7 +48,7 @@ def backupManager_Startup():
 
 #@Name Backup Manager
 #@Hook Library, Books
-#@Image Backup-Green-Button-icon.png
+#@Image BackupMan.png
 #@Description Backup Manager
 
 def backupManager(books):

@@ -20,13 +20,16 @@ class MainForm(Form):
 		self._buttonCancel = System.Windows.Forms.Button()
 		self._checkBoxFullBackup = System.Windows.Forms.CheckBox()
 		self._toolTip1 = System.Windows.Forms.ToolTip(self._components)
+		self._pictureBox1 = System.Windows.Forms.PictureBox()
+		self._pictureBox1.BeginInit()
 		self.SuspendLayout()
 		# 
 		# label1
 		# 
-		self._label1.Location = System.Drawing.Point(13, 13)
+		self._label1.BackColor = System.Drawing.Color.Transparent
+		self._label1.Location = System.Drawing.Point(13, 9)
 		self._label1.Name = "label1"
-		self._label1.Size = System.Drawing.Size(248, 23)
+		self._label1.Size = System.Drawing.Size(138, 34)
 		self._label1.TabIndex = 0
 		self._label1.Text = "Welcome to the Backup Manager"
 		# 
@@ -68,7 +71,7 @@ will be stored""")
 		# 
 		# checkBoxFullBackup
 		# 
-		self._checkBoxFullBackup.Location = System.Drawing.Point(12, 79)
+		self._checkBoxFullBackup.Location = System.Drawing.Point(13, 79)
 		self._checkBoxFullBackup.Name = "checkBoxFullBackup"
 		self._checkBoxFullBackup.Size = System.Drawing.Size(104, 24)
 		self._checkBoxFullBackup.TabIndex = 4
@@ -78,15 +81,25 @@ complete folder %appdata%\\roaming\\cyo\\comicrack
 including all subfolders""")
 		self._checkBoxFullBackup.UseVisualStyleBackColor = True
 		# 
+		# pictureBox1
+		# 
+		self._pictureBox1.Location = System.Drawing.Point(157, -11)
+		self._pictureBox1.Name = "pictureBox1"
+		self._pictureBox1.Size = System.Drawing.Size(128, 128)
+		self._pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
+		self._pictureBox1.TabIndex = 5
+		self._pictureBox1.TabStop = False
+		# 
 		# MainForm
 		# 
 		self.CancelButton = self._buttonCancel
 		self.ClientSize = System.Drawing.Size(324, 109)
+		self.Controls.Add(self._label1)
 		self.Controls.Add(self._checkBoxFullBackup)
 		self.Controls.Add(self._buttonCancel)
 		self.Controls.Add(self._buttonConfigure)
 		self.Controls.Add(self._buttonRun)
-		self.Controls.Add(self._label1)
+		self.Controls.Add(self._pictureBox1)
 		self.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
 		self.MaximizeBox = False
 		self.MinimizeBox = False
@@ -95,7 +108,9 @@ including all subfolders""")
 		self.Text = "Backup Manager for ComicRack %s"
 		self.Load += self.MainFormLoad
 		self.CursorChanged += self.MainFormCursorChanged
+		self._pictureBox1.EndInit()
 		self.ResumeLayout(False)
+		self.PerformLayout()
 
 	def ButtonConfigureClick(self, sender, e):
 		bmUtil = backupManagerUtils()
@@ -113,6 +128,7 @@ including all subfolders""")
 
 	def MainFormLoad(self, sender, e):
 		self.Text = 'Backup Manager for ComicRack %s' % VERSION
+		self._pictureBox1.Image = System.Drawing.Image.FromFile(ICONLARGE)
 
 	def MainFormCursorChanged(self, sender, e):
 		pass
