@@ -10,11 +10,11 @@ from bmUtils import *
 
 class MainForm(Form):
 	def __init__(self):
+
 		self.InitializeComponent()
 	
 	def InitializeComponent(self):
 		self._components = System.ComponentModel.Container()
-		self._label1 = System.Windows.Forms.Label()
 		self._buttonRun = System.Windows.Forms.Button()
 		self._buttonConfigure = System.Windows.Forms.Button()
 		self._buttonCancel = System.Windows.Forms.Button()
@@ -24,19 +24,9 @@ class MainForm(Form):
 		self._pictureBox1.BeginInit()
 		self.SuspendLayout()
 		# 
-		# label1
-		# 
-		self._label1.BackColor = System.Drawing.Color.Transparent
-		self._label1.Location = System.Drawing.Point(13, 9)
-		self._label1.Name = "label1"
-		self._label1.Size = System.Drawing.Size(138, 34)
-		self._label1.TabIndex = 0
-		self._label1.Text = "Welcome to the Backup Manager"
-		# 
 		# buttonRun
 		# 
-		self._buttonRun.DialogResult = System.Windows.Forms.DialogResult.OK
-		self._buttonRun.Location = System.Drawing.Point(13, 50)
+		self._buttonRun.Location = System.Drawing.Point(12, 27)
 		self._buttonRun.Name = "buttonRun"
 		self._buttonRun.Size = System.Drawing.Size(75, 23)
 		self._buttonRun.TabIndex = 1
@@ -48,7 +38,7 @@ class MainForm(Form):
 		# 
 		# buttonConfigure
 		# 
-		self._buttonConfigure.Location = System.Drawing.Point(120, 50)
+		self._buttonConfigure.Location = System.Drawing.Point(115, 27)
 		self._buttonConfigure.Name = "buttonConfigure"
 		self._buttonConfigure.Size = System.Drawing.Size(75, 23)
 		self._buttonConfigure.TabIndex = 2
@@ -61,7 +51,7 @@ will be stored""")
 		# buttonCancel
 		# 
 		self._buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
-		self._buttonCancel.Location = System.Drawing.Point(224, 49)
+		self._buttonCancel.Location = System.Drawing.Point(222, 27)
 		self._buttonCancel.Name = "buttonCancel"
 		self._buttonCancel.Size = System.Drawing.Size(75, 23)
 		self._buttonCancel.TabIndex = 3
@@ -71,7 +61,7 @@ will be stored""")
 		# 
 		# checkBoxFullBackup
 		# 
-		self._checkBoxFullBackup.Location = System.Drawing.Point(13, 79)
+		self._checkBoxFullBackup.Location = System.Drawing.Point(12, 56)
 		self._checkBoxFullBackup.Name = "checkBoxFullBackup"
 		self._checkBoxFullBackup.Size = System.Drawing.Size(104, 24)
 		self._checkBoxFullBackup.TabIndex = 4
@@ -94,7 +84,6 @@ including all subfolders""")
 		# 
 		self.CancelButton = self._buttonCancel
 		self.ClientSize = System.Drawing.Size(324, 109)
-		self.Controls.Add(self._label1)
 		self.Controls.Add(self._checkBoxFullBackup)
 		self.Controls.Add(self._buttonCancel)
 		self.Controls.Add(self._buttonConfigure)
@@ -122,12 +111,15 @@ including all subfolders""")
 		fullBackup = self._checkBoxFullBackup.Checked == True
 		showResults = True
 		self.Cursor = Cursors.WaitCursor
-		bmUtil.do_the_backup(fullBackup, showResults)
+		if bmUtil.do_the_backup(fullBackup, showResults) == True:
+			self._buttonRun.DialogResult = System.Windows.Forms.DialogResult.OK
 		self.Cursor = Cursors.Default
 
 
 	def MainFormLoad(self, sender, e):
-		self.Text = 'Backup Manager for ComicRack %s' % VERSION
+		ini = bmUtils.iniFile()
+		version = ini.getValue(INIFILE, 'Version')
+		self.Text = 'Backup Manager for ComicRack %s' % version
 		self._pictureBox1.Image = System.Drawing.Image.FromFile(ICONLARGE)
 
 	def MainFormCursorChanged(self, sender, e):
