@@ -79,6 +79,9 @@ class backupManagerUtils:
 			now = datetime.datetime.now()
 			myAppDataFolder = System.Environment.ExpandEnvironmentVariables('%appdata%') + '\\'
 			myAppDataFolder = Path.Combine(myAppDataFolder,'cyo\\ComicRack') + '\\'
+			
+			myThumbnailFolder = System.Environment.ExpandEnvironmentVariables('%LOCALAPPDATA%') + r'\cyo\ComicRack\cache\CustomThumbnails'
+			
 			myDBFile = Path.Combine(myAppDataFolder,'ComicDB.xml')
 			myConfigXML = Path.Combine(myAppDataFolder,'config.xml')
 			myDate = now
@@ -93,10 +96,12 @@ class backupManagerUtils:
 				
 				if FULLBACKUP == True:
 					myBackup = backupFolder + '\\ComicDB Full Backup %s.zip' % currentDate
-					zipfile.AddDirectory(myAppDataFolder)
+					zipfile.AddDirectory(myAppDataFolder, myAppDataFolder)
+					zipfile.AddDirectory(myThumbnailFolder, myThumbnailFolder)
 				else:
 					myBackup = backupFolder + '\\ComicDB Backup %s.zip' % currentDate
 					zipfile.AddFile(myDBFile,'')
+					zipfile.AddDirectory(myThumbnailFolder, 'Thumbnails')
 				zipfile.Save(myBackup)
 
 				if SHOWRESULT == True:
