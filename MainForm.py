@@ -26,7 +26,7 @@ class MainForm(Form):
 		# 
 		# buttonRun
 		# 
-		self._buttonRun.Location = System.Drawing.Point(12, 27)
+		self._buttonRun.Location = System.Drawing.Point(12, 34)
 		self._buttonRun.Name = "buttonRun"
 		self._buttonRun.Size = System.Drawing.Size(75, 23)
 		self._buttonRun.TabIndex = 1
@@ -38,7 +38,7 @@ class MainForm(Form):
 		# 
 		# buttonConfigure
 		# 
-		self._buttonConfigure.Location = System.Drawing.Point(115, 27)
+		self._buttonConfigure.Location = System.Drawing.Point(115, 34)
 		self._buttonConfigure.Name = "buttonConfigure"
 		self._buttonConfigure.Size = System.Drawing.Size(75, 23)
 		self._buttonConfigure.TabIndex = 2
@@ -51,7 +51,7 @@ will be stored""")
 		# buttonCancel
 		# 
 		self._buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
-		self._buttonCancel.Location = System.Drawing.Point(222, 27)
+		self._buttonCancel.Location = System.Drawing.Point(222, 34)
 		self._buttonCancel.Name = "buttonCancel"
 		self._buttonCancel.Size = System.Drawing.Size(75, 23)
 		self._buttonCancel.TabIndex = 3
@@ -61,7 +61,7 @@ will be stored""")
 		# 
 		# checkBoxFullBackup
 		# 
-		self._checkBoxFullBackup.Location = System.Drawing.Point(12, 56)
+		self._checkBoxFullBackup.Location = System.Drawing.Point(12, 63)
 		self._checkBoxFullBackup.Name = "checkBoxFullBackup"
 		self._checkBoxFullBackup.Size = System.Drawing.Size(104, 24)
 		self._checkBoxFullBackup.TabIndex = 4
@@ -73,7 +73,7 @@ including all subfolders""")
 		# 
 		# pictureBox1
 		# 
-		self._pictureBox1.Location = System.Drawing.Point(157, -11)
+		self._pictureBox1.Location = System.Drawing.Point(122, -10)
 		self._pictureBox1.Name = "pictureBox1"
 		self._pictureBox1.Size = System.Drawing.Size(128, 128)
 		self._pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
@@ -83,7 +83,7 @@ including all subfolders""")
 		# MainForm
 		# 
 		self.CancelButton = self._buttonCancel
-		self.ClientSize = System.Drawing.Size(324, 109)
+		self.ClientSize = System.Drawing.Size(312, 109)
 		self.Controls.Add(self._checkBoxFullBackup)
 		self.Controls.Add(self._buttonCancel)
 		self.Controls.Add(self._buttonConfigure)
@@ -112,7 +112,9 @@ including all subfolders""")
 		showResults = True
 		self.Cursor = Cursors.WaitCursor
 		if bmUtil.do_the_backup(fullBackup, showResults) == True:
+			print 'should close here'
 			self._buttonRun.DialogResult = System.Windows.Forms.DialogResult.OK
+			self.Dispose()
 		self.Cursor = Cursors.Default
 
 

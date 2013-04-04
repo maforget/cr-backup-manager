@@ -24,9 +24,14 @@ CHANGE - icons added
 CHANGE - license info added
 CHANGE - version info written to and read from ini file (issue 10)
 FIXED - main dialog is closed if ini exists but no valid backupFolder key is found (issue 9)
+FIXED - invalid path raises DirectoryNotFoundException (issue 11)
+FIXED - Most of the MessageBoxes have no title and version info (issue 12)
+CHANGE - Last backup time added to ini file
+FIXED - Values in ini file are not overwritten but added to end of ini file (issue 13)
+FIXED - Config dialog has to be canceled even after successfully running the script (issue 6)
 
 '''
-myVersion = '0.1.2 r22'
+myVersion = '0.1.2 r24'
 import clr
 import System
 clr.AddReference('System.Windows.Forms')
@@ -37,10 +42,8 @@ from System.Drawing import *
 import System.IO
 from System.IO import File,  Directory, Path, FileInfo
 
-print 'step 1'
 import MainForm
 from MainForm import MainForm
-print 'step 2'
 import bmUtils
 from bmUtils import *
 
@@ -70,7 +73,6 @@ def backupManager(books):
 		form.ShowDialog()
 		form.Dispose()
 		
-		return
 					
 					
 					
