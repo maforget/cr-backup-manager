@@ -40,7 +40,7 @@ CHANGE - Last backup time added to ini file
 FIXED - Values in ini file are not overwritten but added to end of ini file (issue 13)
 FIXED - Config dialog has to be canceled even after successfully running the script (issue 6)
 FIXED - package.ini should include reference to Backup Manager icon
-FIXED - both normal and full backups include custom thumbnail folders
+FIXED - both normal and full backups should include custom thumbnail folders
 
 '''
 myVersion = '0.1.2 r26'
