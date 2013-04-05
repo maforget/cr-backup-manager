@@ -21,7 +21,7 @@ limitations under the License.
 Ionic zip library used with permission from http://dotnetzip.codeplex.com
 Icons and images used with permission from http://jonasraskdesign.com
 
-v 0.1.2
+v 1.0
 
 CHANGE - backups are stored as ZIP files so they can easily be restored from within CR
 CHANGE - threshold set to comicdb*.zip instead of *.xml
@@ -43,7 +43,7 @@ FIXED - package.ini should include reference to Backup Manager icon
 FIXED - both normal and full backups should include custom thumbnail folders
 
 '''
-myVersion = '0.1.2 r26'
+myVersion = '1.0 r29'
 import clr
 import System
 clr.AddReference('System.Windows.Forms')
