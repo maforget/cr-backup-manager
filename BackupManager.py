@@ -26,7 +26,7 @@ v 1.0.1
 CHANGE - option for running the Backup Manager at Shutdown of CR
 
 '''
-myVersion = '1.1 r33'
+myVersion = '1.0.1'
 import clr
 import System
 clr.AddReference('System.Windows.Forms')
