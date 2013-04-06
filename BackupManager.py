@@ -21,29 +21,12 @@ limitations under the License.
 Ionic zip library used with permission from http://dotnetzip.codeplex.com
 Icons and images used with permission from http://jonasraskdesign.com
 
-v 1.0
+v 1.0.1
 
-CHANGE - backups are stored as ZIP files so they can easily be restored from within CR
-CHANGE - threshold set to comicdb*.zip instead of *.xml
-CHANGE - result MessageBox redesigned
-CHANGE - version info added to dialogs
-CHANGE - root folder for folder browser is now DESKTOP instead of PERSONAL
-CHANGE - form and methods moved to own modules
-CHANGE - full backup of %appdata%\cyo\comicrack is supported
-CHANGE - icons added (issue 4)
-CHANGE - license info added
-CHANGE - version info written to and read from ini file (issue 10)
-FIXED - main dialog is closed if ini exists but no valid backupFolder key is found (issue 9)
-FIXED - invalid path raises DirectoryNotFoundException (issue 11)
-FIXED - Most of the MessageBoxes have no title and version info (issue 12)
-CHANGE - Last backup time added to ini file
-FIXED - Values in ini file are not overwritten but added to end of ini file (issue 13)
-FIXED - Config dialog has to be canceled even after successfully running the script (issue 6)
-FIXED - package.ini should include reference to Backup Manager icon
-FIXED - both normal and full backups should include custom thumbnail folders
+CHANGE - option for running the Backup Manager at Shutdown of CR
 
 '''
-myVersion = '1.0 r29'
+myVersion = '1.1 r33'
 import clr
 import System
 clr.AddReference('System.Windows.Forms')
@@ -72,7 +55,17 @@ def backupManager_Startup():
 		setVersionInfo()
 		bmUtil = backupManagerUtils()
 		bmUtil.do_the_backup(False, False)
-		
+
+#@Name Backup Manager (Shutdown)
+#@Hook Shutdown
+#@Enabled false
+#@Description Backup Manager (Shutdown)
+
+def backupManager_Shutdown(user_is_closing):
+		print 'Shutting Down'
+		bmUtil = backupManagerUtils()
+		bmUtil.do_the_backup(False, False)
+		return True		
 				
 #@Name Backup Manager
 #@Hook Library, Books
