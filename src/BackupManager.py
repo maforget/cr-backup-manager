@@ -25,8 +25,14 @@ v 1.0.1
 
 CHANGE - option for running the Backup Manager at Shutdown of CR
 
+v 1.1 (by maforget)
+
+CHANGE - Made compatible with ComicRack Community Edition, Alternate Config and Portable (will auto detect the data folder location).
+	 (Unless you do a Full Backup, it will only save the current configuration DB & thumbnails)
+CHANGE - Updated Zip Library to DotNetZip v1.16.0
+
 '''
-myVersion = '1.0.1'
+myVersion = '1.1'
 import clr
 import System
 clr.AddReference('System.Windows.Forms')
