@@ -54,7 +54,7 @@ class MainForm(Form):
 		self._buttonRun.Size = System.Drawing.Size(75, 23)
 		self._buttonRun.TabIndex = 1
 		self._buttonRun.Text = "Backup"
-		self._toolTip1.SetToolTip(self._buttonRun, """Backups ComicDB.xml only
+		self._toolTip1.SetToolTip(self._buttonRun, """Backups ComicDB.xml (and Custom Thumbnails) only
 (unless \"full backup\" is checked)""")
 		self._buttonRun.UseVisualStyleBackColor = True
 		self._buttonRun.Click += self.ButtonRunClick
@@ -90,8 +90,8 @@ will be stored""")
 		self._checkBoxFullBackup.TabIndex = 4
 		self._checkBoxFullBackup.Text = "full backup"
 		self._toolTip1.SetToolTip(self._checkBoxFullBackup, """if checked this backup will contain the 
-complete folder %appdata%\\roaming\\cyo\\comicrack
-including all subfolders""")
+complete Data folder, including all Configurations, 
+Thumbnails and Scripts, excluding some Cache files""")
 		self._checkBoxFullBackup.UseVisualStyleBackColor = True
 		# 
 		# pictureBox1
