@@ -29,7 +29,7 @@ import datetime
 import System.IO
 from System.IO import Path, FileInfo, File, Directory
 
-clr.AddReference('Ionic.Zip')
+clr.AddReference('DotNetZip')
 from Ionic.Zip import *
 
 FOLDER = FileInfo(__file__).DirectoryName + '\\'
