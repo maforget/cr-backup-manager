@@ -1,5 +1,7 @@
 ### You should consider using [ComicRack Community Edition](https://github.com/maforget/ComicRackCE). And if you can please contribute to the project.
 
+[Download Here](https://github.com/maforget/cr-backup-manager/releases/download/v1.1/CR.Backup.Manager_v1.1.crplugin)
+
 # Backup Manager for ComicRack
 
 docdoom (updated by maforget) Proudly Presents the Backup Manager for ComicRack
