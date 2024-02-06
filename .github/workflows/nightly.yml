@@ -56,7 +56,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           artifacts: ${{ steps.get_filepath.outputs.file_path }}
           tag: "nightly"
-          commit: main
+          commit: ${{ github.ref_name }}
           prerelease: true
           allowUpdates: true
           updateOnlyUnreleased: true
