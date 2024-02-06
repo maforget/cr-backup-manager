@@ -66,9 +66,10 @@ def get_plugin_name():
     thedict = dict()
     for line in package:
         l = line.split('=')
-        key = l[0].strip()
-        value = l[1].strip()
-        thedict[key] = value
+        if len(l) == 2:
+            key = l[0].strip()
+            value = l[1].strip()
+            thedict[key] = value
     
     name = thedict["Name"]
     version = thedict["Version"]
