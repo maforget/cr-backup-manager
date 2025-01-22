@@ -33,10 +33,14 @@ CHANGE - Updated Zip Library to DotNetZip v1.16.0
 
 v 1.2 (by maforget)
 
-Added Full Backup option on startup and shutdown
+ADDED - Full Backup option on startup and shutdown
+
+v 1.3 (by maforget)
+
+CHANGED - Startup backup will now be done in the background and not freeze the program anymore
 
 '''
-myVersion = '1.1'
+myVersion = '1.3'
 import clr
 import System
 clr.AddReference('System.Windows.Forms')

@@ -1,6 +1,6 @@
 ### You should consider using [ComicRack Community Edition](https://github.com/maforget/ComicRackCE). And if you can please contribute to the project.
 
-[Download Here](https://github.com/maforget/cr-backup-manager/releases/download/v1.2/CR.Backup.Manager_v1.2.crplugin)
+[Download Here](https://github.com/maforget/cr-backup-manager/releases/download/v1.3/CR.Backup.Manager_v1.3.crplugin)
 
 # Backup Manager for ComicRack
 
@@ -9,6 +9,9 @@ docdoom (updated by maforget) Proudly Presents the Backup Manager for ComicRack
 This little plugin automates the process of saving the ComicRack library file. See the manual here for further information.
 
 ### Changes from original (by maforget)
+
+**v1.3**
+* CHANGE - Startup backup will now be done in the background and not freeze the program anymore
 
 **v1.2**
 * Added - Added a full backup option on startup & shutdown
