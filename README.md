@@ -1,14 +1,19 @@
 ### You should consider using [ComicRack Community Edition](https://github.com/maforget/ComicRackCE). And if you can please contribute to the project.
 
-[Download Here](https://github.com/maforget/cr-backup-manager/releases/download/v1.1/CR.Backup.Manager_v1.1.crplugin)
+[Download Here](https://github.com/maforget/cr-backup-manager/releases/download/v1.2/CR.Backup.Manager_v1.2.crplugin)
 
 # Backup Manager for ComicRack
 
 docdoom (updated by maforget) Proudly Presents the Backup Manager for ComicRack
 
 This little plugin automates the process of saving the ComicRack library file. See the manual here for further information.
-Major changes in version 1.1 (by maforget)
 
+### Changes from original (by maforget)
+
+**v1.2**
+* Added - Added a full backup option on startup & shutdown
+
+**v1.1**
 * CHANGE - Made compatible with ComicRack Community Edition, Alternate Config and Portable (will auto detect the data folder location).
     * Unless you do a Full Backup, it will only save the current configuration DB & thumbnails.
 * CHANGE - Updated Zip Library to DotNetZip v1.16.0
