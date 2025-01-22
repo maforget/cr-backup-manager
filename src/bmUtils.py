@@ -165,7 +165,8 @@ class backupManagerUtils:
                         if myFolder.Portable:
                             backupManagerUtils.add_files_to_zip(zipfile, myAppDataFolder, 'Cache', thumbnailPath) #Using this method here, because I don't want to add the other Cache files
                         else:
-                            backupManagerUtils.add_files_to_zip(zipfile, myAppDataFolder, prefix = roamingPrefix)
+                            zipfile.AddDirectory(myAppDataFolder, roamingPrefix)
+                            # backupManagerUtils.add_files_to_zip(zipfile, myAppDataFolder, prefix = roamingPrefix)
                             backupManagerUtils.add_files_to_zip(zipfile, localAppPath, 'Cache', thumbnailPath, prefix = localPrefix)
                     else:
                         if myFolder.Portable:

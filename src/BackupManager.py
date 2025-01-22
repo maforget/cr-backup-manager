@@ -31,6 +31,10 @@ CHANGE - Made compatible with ComicRack Community Edition, Alternate Config and 
 	 (Unless you do a Full Backup, it will only save the current configuration DB & thumbnails)
 CHANGE - Updated Zip Library to DotNetZip v1.16.0
 
+v 1.2 (by maforget)
+
+Added Full Backup option on startup and shutdown
+
 '''
 myVersion = '1.1'
 import clr
@@ -61,6 +65,16 @@ def backupManager_Startup():
 		setVersionInfo()
 		bmUtil = backupManagerUtils()
 		bmUtil.do_the_backup(False, False)
+        
+#@Name Backup Manager - Full Backup (Startup)
+#@Hook Startup
+#@Enabled false
+#@Description Backup Manager - Full Backup (Startup)
+
+def backupManager_Full_Startup():
+		setVersionInfo()
+		bmUtil = backupManagerUtils()
+		bmUtil.do_the_backup(True, False)
 
 #@Name Backup Manager (Shutdown)
 #@Hook Shutdown
@@ -72,6 +86,17 @@ def backupManager_Shutdown(user_is_closing):
 		bmUtil = backupManagerUtils()
 		bmUtil.do_the_backup(False, False)
 		return True		
+        
+#@Name Backup Manager - Full Backup (Shutdown)
+#@Hook Shutdown
+#@Enabled false
+#@Description Backup Manager - Full Backup (Shutdown)
+
+def backupManager_Full_Shutdown(user_is_closing):
+		print 'Shutting Down'
+		bmUtil = backupManagerUtils()
+		bmUtil.do_the_backup(True, False)
+		return True	
 				
 #@Name Backup Manager
 #@Hook Library, Books
