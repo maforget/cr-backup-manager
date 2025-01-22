@@ -43,6 +43,8 @@ clr.AddReference('System.Windows.Forms')
 clr.AddReference('System.Drawing')
 from System.Windows.Forms import *
 from System.Drawing import *
+from System import Action
+from System.Threading.Tasks import Task
 
 import System.IO
 from System.IO import File,  Directory, Path, FileInfo
@@ -64,8 +66,9 @@ def setVersionInfo():
 def backupManager_Startup():
 		setVersionInfo()
 		bmUtil = backupManagerUtils()
-		bmUtil.do_the_backup(False, False)
-        
+		action = Action(lambda: bmUtil.do_the_backup(False, False))
+		Task.Run(action)
+
 #@Name Backup Manager - Full Backup (Startup)
 #@Hook Startup
 #@Enabled false
@@ -74,7 +77,8 @@ def backupManager_Startup():
 def backupManager_Full_Startup():
 		setVersionInfo()
 		bmUtil = backupManagerUtils()
-		bmUtil.do_the_backup(True, False)
+		action = Action(lambda: bmUtil.do_the_backup(True, False))
+		Task.Run(action)
 
 #@Name Backup Manager (Shutdown)
 #@Hook Shutdown
@@ -86,7 +90,7 @@ def backupManager_Shutdown(user_is_closing):
 		bmUtil = backupManagerUtils()
 		bmUtil.do_the_backup(False, False)
 		return True		
-        
+
 #@Name Backup Manager - Full Backup (Shutdown)
 #@Hook Shutdown
 #@Enabled false
