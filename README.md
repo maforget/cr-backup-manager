@@ -2,6 +2,10 @@
 
 [Download Here](https://github.com/maforget/cr-backup-manager/releases/download/v1.2/CR.Backup.Manager_v1.2.crplugin)
 
+---
+
+### The functionality of this plugin is now built-in to ComicRackCE and this plugin isn't required anymore. See differences with this plugin here: [Backup Manager](https://github.com/maforget/ComicRackCE/wiki/Backup-Manager).
+
 # Backup Manager for ComicRack
 
 docdoom (updated by maforget) Proudly Presents the Backup Manager for ComicRack
